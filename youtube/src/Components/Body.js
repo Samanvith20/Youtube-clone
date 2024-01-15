@@ -1,11 +1,15 @@
 import React from 'react';
-import Sidebar from './Sidebar'; // Use correct casing
+import Sidebar from './Sidebar'; 
+import Buttonlist from './Buttonlist';
+import VideoContainer from './VideoContainer';
 
 
 const Body = () => {
   return (
-    <div>
+    <div className='flex'>
      <Sidebar/>
+     <Buttonlist/>
+     <VideoContainer/>
     </div>
   )
 }
