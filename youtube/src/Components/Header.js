@@ -11,10 +11,11 @@ const Header = () => {
   };
 
   return (
-    <div className="grid grid-flow-col p-5 m-2 shadow-xl">
+    <div className="grid grid-flow-col p-5 m-2 ">
       <div className="flex col-span-1">
         <img src={HAMBURGER_LOGO} alt="Hamburger" className="h-8 cursor-pointer" onClick={toggleClick} />
-        <img src={YOUTUBE_LOGO} alt="YouTube Logo" className="h-8 mx-4" />
+       
+       <a href="/"> <img src={YOUTUBE_LOGO} alt="YouTube Logo" className="h-8 mx-4" /></a>
       </div>
       <div className="col-span-10 px-10 ml-36">
         <input
@@ -27,7 +28,7 @@ const Header = () => {
         </button>
       </div>
       <div>
-        <img src={USER_IMAGE} alt="User Logo" className="h-15 w-10 rounded-full" />
+        <img src={USER_IMAGE} alt="User Logo" className="h-15 w-9 rounded-full" />
       </div>
     </div>
   );
