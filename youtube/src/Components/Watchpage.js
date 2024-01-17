@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import { closeMenu } from "../utils/sidebarslice";
+import CommentsContainer from "./CommentsContainer";
 
 
 const Watchpage = () => {
@@ -27,6 +28,9 @@ const Watchpage = () => {
 
          </div>
          </div>
+          <div>
+             <CommentsContainer/>
+          </div>
          </div>
 
         );
