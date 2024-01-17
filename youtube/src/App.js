@@ -9,27 +9,30 @@ import MainContainer from './Components/MainContainer';
 import Watchpage from './Components/Watchpage';
 
 const App = () => {
-   const appRouter= createBrowserRouter([{
-    path:"/",
-    element:<Body/>,
-    children:[
-      {
-       path:"/",
-       children:<MainContainer/>
-    },
+  const appRouter = createBrowserRouter([
     {
-      path: "watch",
-      element: <Watchpage />,
+      path: "/",
+      element: <Body />,
+      children: [
+        {
+          path: "/",
+          element: <MainContainer />,
+        },
+        {
+          path: "watch",
+          element: <Watchpage />,
+        },
+      ],
     },
-  ]
-   }])
+  ]);
+
   return (
-    <div>
-      <Provider store={store}>
+    <Provider store={store}>
+      <div>
         <Header />
-        <RouterProvider router={appRouter}/>
-      </Provider>
-    </div>
+        <RouterProvider router={appRouter} />
+      </div>
+    </Provider>
   );
 };
 
