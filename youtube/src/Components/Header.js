@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { HAMBURGER_LOGO, USER_IMAGE, YOUTUBE_LOGO } from '../utils/constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toggleMenu } from '../utils/sidebarslice';
 import { YOUTUBE_SEARCH_API } from '../utils/constants';
+import { updatecache } from '../utils/searchslice';
 
 const Header = () => {
   const [search, setsearch] = useState([]);
@@ -13,25 +14,37 @@ const Header = () => {
   const toggleClick = () => {
     dispatch(toggleMenu());
   };
-
-  useEffect(() => {
-    const searchdata = async () => {
-      try {
-        const response = await fetch(YOUTUBE_SEARCH_API + search);
-        const json = await response.json();
-        setsuggestions(json[1]);
-      } catch (error) {
-        console.error('An error occurred while fetching data:', error);
+   
+  const searchdata = async () => {
+    try {
+      const response = await fetch(YOUTUBE_SEARCH_API + search);
+      const json = await response.json();
+      setsuggestions(json[1]);
+      // make an action and update the slice
+       dispatch(updatecache({
+        [search]:json[1],
+       }
+       ))
+    } catch (error) {
+      console.error('An error occurred while fetching data:', error);
+    }
+  };
+   // subscribe the slice
+   const searchcache= useSelector((store)=>store.search)
+   useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchcache[search]) {
+        setsuggestions(searchcache[search]);
+      } else {
+        searchdata();
       }
-    };
-
-    const timer = setTimeout(() => searchdata(), 300);
-
+    }, 300);
+  
     return () => {
       clearTimeout(timer);
     };
-  }, [search, ]);
-
+  }, [search]);
+  
   return (
     <div className="grid grid-flow-col p-5 m-2 ">
       <div className="flex col-span-1">
