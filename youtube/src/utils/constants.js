@@ -13,3 +13,4 @@ export const HAMBURGER_LOGO=
   YOUR_API_KEY;
   export const YOUTUBE_SEARCH_API =
   "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q="
+  export const LIVE_OFFSET_MESSAGES=20
