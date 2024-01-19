@@ -15,9 +15,7 @@ const chatSlice = createSlice({
         // Add the new message
         state.messages.push(newMessage);
       },
-      
-      
-  },
+      },
 });
 
 export const { addmessage } = chatSlice.actions;

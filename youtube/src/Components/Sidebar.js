@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import { HOME_LOGO, SHORTS_LOGO, YOUTUBE_LOGO } from '../utils/constants';
 import { useSelector } from 'react-redux';
 
@@ -13,11 +14,11 @@ const Sidebar = () => {
       <ul className="space-y-2">
         <li className="flex items-center mb-4 text-lg font-semibold">
           <img src={HOME_LOGO} alt="home" className="w-6 h-6 mr-2 rounded-full" />
-          Home
+           <Link to="/">Home</Link>
         </li>
         <li className="flex items-center mb-4 text-lg font-semibold">
           <img src={YOUTUBE_LOGO} alt="demo" className="w-6 h-6 mr-2 rounded-full" />
-          Demo
+          <Link to="/demo">Demo</Link>
         </li>
         <li className="flex items-center mb-4 mt-6 text-lg font-semibold">
           <img src={SHORTS_LOGO} alt='shorts' className="w-6 h-6 mr-2 rounded-full" />
