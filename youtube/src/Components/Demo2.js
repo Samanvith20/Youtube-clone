@@ -11,7 +11,7 @@ const Demo2 = () => {
    *
    * */
 
-  console.log("Rendering....");
+  //console.log("Rendering....");
 
   
 

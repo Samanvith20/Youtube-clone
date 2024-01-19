@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { YOUTUBE_API } from '../utils/constants';
 import Videocard from './Videocard';
 import { Link } from 'react-router-dom';
+import ShimmerLoader from './Shimmer';
 
 const VideoContainer = () => {
   const [showvideo, setshowvideo] = useState();
+
   const fetchData = async () => {
     try {
       const response = await fetch(YOUTUBE_API);
@@ -19,15 +21,24 @@ const VideoContainer = () => {
     fetchData();
   }, []);
 
+  if (showvideo === undefined) {
+    return <ShimmerLoader />;
+  }
+
   return (
     <div className="flex flex-wrap justify-center ">
-    {showvideo && showvideo.length > 0 &&
-      showvideo.map((video) => (
-        <Link key={video.id} to={"/watch?v=" + video.id}>
-        <Videocard key={video.id} info={video} />
-        </Link>
-      ))}
-  </div>
+      {showvideo &&
+        showvideo.length > 0 &&
+        showvideo.map((video) => (
+          <Link key={video.id} to={"/watch?v=" + video.id}>
+            <Videocard
+              key={video.id}
+              info={video}
+              
+            />
+          </Link>
+        ))}
+    </div>
   );
 };
 

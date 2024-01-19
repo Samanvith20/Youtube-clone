@@ -4,7 +4,7 @@ import Header from './Components/Header';
 import Body from './Components/Body';
 import { Provider } from 'react-redux';  
 import store from './utils/store';
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainContainer from './Components/MainContainer';
 import Watchpage from './Components/Watchpage';
 import Demo from './Components/Demo';
@@ -35,7 +35,9 @@ const App = () => {
   return (
     <Provider store={store}>
       <div>
+         <BrowserRouter>
         <Header />
+        </BrowserRouter>
         <RouterProvider router={appRouter} />
       </div>
     </Provider>
